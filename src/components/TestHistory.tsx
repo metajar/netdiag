@@ -32,43 +32,47 @@ const TestHistory: React.FC<TestHistoryProps> = ({ history, onClear }) => {
       </div>
 
       <div className="space-y-2">
-        {history.map((test) => (
-          <div
-            key={test.testId}
-            className="bg-gray-700 rounded-md p-3 hover:bg-gray-600 transition-colors"
-          >
-            <div className="flex justify-between items-start">
-              <div>
-                <p className="font-medium">{test.ip}</p>
-                <p className="text-sm text-gray-400">
-                  {formatDistanceToNow(new Date(test.timestamp))} ago
-                </p>
-              </div>
-              <div className="text-right">
-                <p className="text-sm">
-                  <span className="text-gray-400">Latency:</span>{' '}
-                  <span className={`font-medium ${
-                    test.summary.avgLatency > 100 ? 'text-red-400' :
-                    test.summary.avgLatency > 50 ? 'text-yellow-400' :
-                    'text-green-400'
-                  }`}>
-                    {test.summary.avgLatency}ms
-                  </span>
-                </p>
-                <p className="text-sm">
-                  <span className="text-gray-400">Loss:</span>{' '}
-                  <span className={`font-medium ${
-                    test.summary.packetLoss > 5 ? 'text-red-400' :
-                    test.summary.packetLoss > 0 ? 'text-yellow-400' :
-                    'text-green-400'
-                  }`}>
-                    {test.summary.packetLoss}%
-                  </span>
-                </p>
+        {history.map((test) => {
+          const targetHop = test.hops[test.hops.length - 1];
+          
+          return (
+            <div
+              key={test.testId}
+              className="bg-gray-700 rounded-md p-3 hover:bg-gray-600 transition-colors"
+            >
+              <div className="flex justify-between items-start">
+                <div>
+                  <p className="font-medium">{test.ip}</p>
+                  <p className="text-sm text-gray-400">
+                    {formatDistanceToNow(new Date(test.timestamp))} ago
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm">
+                    <span className="text-gray-400">Target Latency:</span>{' '}
+                    <span className={`font-medium ${
+                      targetHop.latency > 100 ? 'text-red-400' :
+                      targetHop.latency > 50 ? 'text-yellow-400' :
+                      'text-green-400'
+                    }`}>
+                      {targetHop.latency}ms
+                    </span>
+                  </p>
+                  <p className="text-sm">
+                    <span className="text-gray-400">Target Loss:</span>{' '}
+                    <span className={`font-medium ${
+                      targetHop.packetLoss > 5 ? 'text-red-400' :
+                      targetHop.packetLoss > 0 ? 'text-yellow-400' :
+                      'text-green-400'
+                    }`}>
+                      {targetHop.packetLoss}%
+                    </span>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

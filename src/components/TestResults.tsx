@@ -35,6 +35,9 @@ const TestResults: React.FC<TestResultsProps> = ({ results }) => {
     linkElement.click();
     document.body.removeChild(linkElement);
   };
+
+  // Get the target (last hop) metrics
+  const targetHop = results.hops[results.hops.length - 1];
   
   return (
     <div className="space-y-4">
@@ -101,22 +104,27 @@ const TestResults: React.FC<TestResultsProps> = ({ results }) => {
       </div>
       
       <div className="p-4 bg-blue-900/30 border border-blue-800/50 rounded-lg">
-        <h3 className="text-lg font-medium mb-2">Summary</h3>
+        <h3 className="text-lg font-medium mb-2">Target Summary</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-gray-800 p-3 rounded-md">
-            <p className="text-gray-400 text-sm">Average Latency</p>
-            <p className="text-xl font-semibold">{results.summary.avgLatency} ms</p>
+            <p className="text-gray-400 text-sm">Target Latency</p>
+            <p className="text-xl font-semibold">{targetHop.latency} ms</p>
           </div>
           <div className="bg-gray-800 p-3 rounded-md">
-            <p className="text-gray-400 text-sm">Packet Loss</p>
-            <p className="text-xl font-semibold">{results.summary.packetLoss}%</p>
+            <p className="text-gray-400 text-sm">Target Packet Loss</p>
+            <p className="text-xl font-semibold">{targetHop.packetLoss}%</p>
+            {targetHop.packetLoss > 0 && (
+              <p className="text-xs text-gray-400 mt-1">
+                {Math.round(results.summary.packetsSent * (targetHop.packetLoss / 100))} packets lost
+              </p>
+            )}
           </div>
           <div className="bg-gray-800 p-3 rounded-md">
-            <p className="text-gray-400 text-sm">Jitter</p>
-            <p className="text-xl font-semibold">{results.summary.jitter} ms</p>
+            <p className="text-gray-400 text-sm">Target Jitter</p>
+            <p className="text-xl font-semibold">{targetHop.jitter} ms</p>
           </div>
           <div className="bg-gray-800 p-3 rounded-md">
-            <p className="text-gray-400 text-sm">Hops</p>
+            <p className="text-gray-400 text-sm">Total Hops</p>
             <p className="text-xl font-semibold">{results.hops.length}</p>
           </div>
         </div>

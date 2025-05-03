@@ -1,0 +1,81 @@
+{
+  "ip": "1.1.1.1",
+  "timestamp": "2025-05-03T13:16:03.533Z",
+  "testId": "9omxc9wqsq",
+  "hops": [
+    {
+      "ip": "192.168.88.1",
+      "latency": 6.1,
+      "packetLoss": 20,
+      "jitter": 1.2,
+      "packetCount": 10
+    },
+    {
+      "ip": "Unknown",
+      "latency": 0,
+      "packetLoss": 100,
+      "jitter": 0,
+      "packetCount": 10
+    },
+    {
+      "ip": "173.219.198.192",
+      "latency": 19.5,
+      "packetLoss": 20,
+      "jitter": 9.5,
+      "packetCount": 10
+    },
+    {
+      "ip": "173.219.200.204",
+      "latency": 18.9,
+      "packetLoss": 0,
+      "jitter": 2,
+      "packetCount": 10
+    },
+    {
+      "ip": "173.219.152.193",
+      "latency": 18.9,
+      "packetLoss": 30,
+      "jitter": 2.3,
+      "packetCount": 10,
+      "asn": "AS19108",
+      "asnName": "173.219.128.0/18"
+    },
+    {
+      "ip": "206.223.118.145",
+      "latency": 20.9,
+      "packetLoss": 30,
+      "jitter": 2.2,
+      "packetCount": 10
+    },
+    {
+      "ip": "141.101.74.201",
+      "latency": 22.2,
+      "packetLoss": 10,
+      "jitter": 4.7,
+      "packetCount": 10,
+      "asn": "AS13335",
+      "asnName": "141.101.74.0/24"
+    },
+    {
+      "ip": "1.1.1.1",
+      "latency": 18.1,
+      "packetLoss": 0,
+      "jitter": 1.5,
+      "packetCount": 10,
+      "asn": "AS13335",
+      "asnName": "1.1.1.0/24"
+    }
+  ],
+  "summary": {
+    "avgLatency": 15.57,
+    "minLatency": 0,
+    "maxLatency": 42.1,
+    "stdDevLatency": 2.92,
+    "packetLoss": 26.25,
+    "jitter": 2.92,
+    "packetsSent": 80,
+    "packetsReceived": 59,
+    "testDuration": 10
+  },
+  "rawOutput": "Start: 2025-05-03T08:15:47-0500\nHOST: macbook.pro.henrynetworks.c Loss%   Snt   Last   Avg  Best  Wrst StDev\n  1.|-- 192.168.88.1              30.0%    10    4.2   5.7   3.9   9.3   1.9\n  2.|-- ???                       100.0    10    0.0   0.0   0.0   0.0   0.0\n  3.|-- 173.219.198.192           10.0%    10   14.7  16.0  12.3  26.7   4.3\n  4.|-- 173.219.200.204            0.0%    10   16.8  18.0  14.6  23.6   2.6\n  5.|-- 173.219.152.193           20.0%    10   16.2  17.8  15.1  27.5   4.0\n  6.|-- 206.223.118.145           90.0%    10   19.1  19.1  19.1  19.1   0.0\n  7.|-- 141.101.74.201             0.0%    10   28.1  22.1  17.2  29.8   4.5\n  8.|-- 1.1.1.1                    0.0%    10   17.0  18.6  16.9  21.6   1.5\n"
+}
